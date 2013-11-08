@@ -15,7 +15,12 @@
 		"type" : "git", 
 		"url" : "http://github.com/KareemSaleh/sfwme.git"
 	},
+	"scripts": {
+    	"start": "node app.js"
+	},
 	"dependencies": {
-		"express": "3.x"
+		"express": "3.x",
+		"ejs": "*",
+		"less-middleware": "*"
 	}
 }
