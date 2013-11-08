@@ -4,9 +4,12 @@
 	"version": "0.0.1",
 	"private": true,
 	"license" : "MIT",
-	"name" : "Kareem Saleh",
-	"email" : "kareemsal@gmail.com",
-	"url" : "http://kareemsaleh.org",
+	"author" : 
+	{
+		"name" : "Kareem Saleh",
+		"email" : "kareemsal@gmail.com",
+		"url" : "http://kareemsaleh.org"
+	},
 	"repository" :
 	{ 
 		"type" : "git", 
