@@ -1,4 +1,4 @@
 sfwme
 =====
 
-Not for censoring, for avoiding embarrassment.
+Not for censoring. For avoiding akwardness.
