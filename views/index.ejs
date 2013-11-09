@@ -29,11 +29,13 @@
 				</div>
 			</div>
 		</div>
+
 		<div class="header">
 			<div class="container">
 				<h2>Safe For Work your URL</h2>
 			</div>
 		</div>
+
 		<div class="container">
 			<div class="input-group">
   				<span class="input-group-addon">http://</span>
@@ -43,20 +45,26 @@
 				</span>
 			</div>
 		</div>
-		<div class="container hidden">
-			<div class="radio">
-				<label>
-					<input type="radio" name="optionsRadios" id="nsfwRadio" value="nsfw" checked>
-					This is not safe for work. Warn the user when they click it.
-				</label>
-			</div>
-			<div class="radio">
-				<label>
-					<input type="radio" name="optionsRadios" id="sfwRadio" value="sfw">
-					This is actually safe for work. I just wanted to shorten the URL.
-				</label>
+		
+		<div class="container">
+			<div class="row">
+				<div class="col-lg-12 text-center">
+					<div class="radio-inline">
+						<label class="text-danger">
+							<input type="radio" name="optionsRadios" id="nsfwRadio" value="nsfw" checked>
+							This is not safe for work. Warn the user when they click it.
+						</label>
+					</div>
+					<div class="radio-inline">
+						<label class="text-success">
+							<input type="radio" name="optionsRadios" id="sfwRadio" value="sfw">
+							This is actually safe for work. I just wanted to shorten the URL.
+						</label>
+					</div>
+				</div>
 			</div>
 		</div>
+
 		<script src="//ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js"></script>
 		<script src="//netdna.bootstrapcdn.com/bootstrap/3.0.2/js/bootstrap.min.js"></script>
 	</body>
