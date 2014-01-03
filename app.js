@@ -36,8 +36,9 @@ if ('development' == app.get('env')) {
 // Api routes
 app.get('/api', api.index);
 
-// Main routes
+// Web routes
 app.get('/', routes.index);
+app.get('/about', routes.index);
 app.get('/:id', routes.redirect);
 
 http.createServer(app).listen(app.get('port'), function(){

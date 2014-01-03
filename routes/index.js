@@ -4,8 +4,16 @@
  */
 
 exports.index = function(req, res){
-	res.render('index', { title: 'SFWME' });
+	res.render('index', { title: 'SFWMe' });
 };
+
+exports.popular = function(req, res){
+
+}
+
+exports.about = function(req, res){
+
+}
 
 exports.redirect = function(req, res){
  	// TODO: Check if this URL exists in our storage
