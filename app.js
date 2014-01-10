@@ -10,6 +10,7 @@ var routes = require('./routes');
 var api = require('./routes/api');
 var http = require('http');
 var path = require('path');
+var check = require('validator').check;
 
 var app = express();
 
@@ -35,10 +36,12 @@ if ('development' == app.get('env')) {
 
 // Api routes
 app.get('/api', api.index);
+app.post('/save', api.save);
 
 // Web routes
 app.get('/', routes.index);
-app.get('/about', routes.index);
+app.get('/popular', routes.popular);
+app.get('/about', routes.about);
 app.get('/:id', routes.redirect);
 
 http.createServer(app).listen(app.get('port'), function(){
