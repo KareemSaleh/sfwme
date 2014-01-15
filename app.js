@@ -4,8 +4,6 @@
  */
 
 var express = require('express');
-var redis = require('redis');
-var db = redis.createClient();
 var routes = require('./routes');
 var api = require('./routes/api');
 var http = require('http');

@@ -1,5 +1,8 @@
 var check = require('validator').check,
-    sanitize = require('validator').sanitize;
+    sanitize = require('validator').sanitize,
+    crypto = require('crypto'),
+    redis = require('redis'),
+	db = redis.createClient();
 
 /*
  * Index endpoint. Lets put some direction here
@@ -14,7 +17,7 @@ exports.index = function(req, res) {
 exports.save = function(req, res) {
 
 	// Validate data
-	var status
+	var status;
 	url = req.body.url;
 	source = req.body.source;
 
@@ -27,7 +30,12 @@ exports.save = function(req, res) {
 		return;
 	}
 
-	// TODO: Generate unique hash and save
+	// Generate unique token (I think) and save
+	var token;
+	crypto.randomBytes(4, function(ex, buf) {
+		token = buf.toString('hex');
+		console.log(token);
+	});
 
 	res.json({
 		status: "TODO Return Hash"
