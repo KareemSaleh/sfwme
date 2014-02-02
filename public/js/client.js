@@ -16,7 +16,7 @@ $(document).ready(function() {
 		});
 	});
 
-	// On key Press show the options if something is in the field
+	// On key Up show the options if something is in the field
 	input_url.keyup(function() {
 		var value = $(this).val();
 		if(value && value.length > 0) {

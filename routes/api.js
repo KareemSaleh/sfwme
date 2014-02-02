@@ -1,8 +1,22 @@
 var check = require('validator').check,
-    sanitize = require('validator').sanitize,
-    crypto = require('crypto'),
-    redis = require('redis'),
+	sanitize = require('validator').sanitize,
+	crypto = require('crypto'),
+	redis = require('redis'),
 	db = redis.createClient();
+ 
+// ---------------------------------------------------
+// Private Methods
+// ---------------------------------------------------
+ 
+var respond = function(res, token) {
+	res.json({
+		url: "http://sfwme.com/" + token
+	});
+}
+
+// ---------------------------------------------------
+// Export Methods
+// ---------------------------------------------------
 
 /*
  * Index endpoint. Lets put some direction here
@@ -24,20 +38,28 @@ exports.save = function(req, res) {
 	try {
 		check(url).isUrl();
 	} catch(err) {
-		res.json({
+		// 422 Unprocessable Entity
+		res.status(422).json({
 			error: err
 		});
 		return;
 	}
 
-	// Generate unique token (I think) and save
-	var token;
-	crypto.randomBytes(4, function(ex, buf) {
-		token = buf.toString('hex');
-		console.log(token);
-	});
+	// Is this url already in our db?
+	db.get(url, function(err, reply) {
+		
+		// reply is null when the key is missing
+		if (!reply) {
+			
+			// Generate unique (ish) token and save
+			crypto.randomBytes(4, function(ex, buf) {
+				var token = buf.toString('hex');
+				db.set(url, token, redis.print);
 
-	res.json({
-		status: "TODO Return Hash"
+				respond(res, token);
+			});
+		} else {
+			respond(res, reply);
+		}
 	});
 };
