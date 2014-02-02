@@ -3,7 +3,6 @@
 	"description": "Not for censoring, for avoiding akwardness.",
 	"version": "0.0.1",
 	"private": true,
-	"license" : "MIT",
 	"author" : 
 	{
 		"name" : "Kareem Saleh",
