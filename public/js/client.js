@@ -1,19 +1,40 @@
+
+/*
+ * Submit the URL to the SFWMe API
+ */
+var submitUrl = function(input_url, input_option) {
+	input_url.addClass('loading');
+
+	$.post("save", { url: input_url.val(), option: input_option.val(), source: "web" }, function(data, textStatus, jqXHR) {
+		console.log("Success:");
+		console.log(data);
+	}).fail(function() {
+		console.log("Fail:");
+		console.log(jqXHR);
+	}).always(function() {
+		input_url.removeClass('loading');
+	});
+}
+
+/*
+ * jQery Ready function
+ */
 $(document).ready(function() {
 	var input_url = $('#input-url');
+	var input_option = $('input[name=optionsRadios]');
 	var btn_go = $('#btn-go');
 	var div_options = $('#options');
 
-	// Btn click
+	// Btn click & Htting the enter button.
 	btn_go.on('click', function() {
-		input_url.addClass('loading');
-
-		$.post("save", { url: $('#input-url').val(), source: "web" }, function(data, textStatus, jqXHR) {
-			console.log("success");
-		}).fail(function() {
-			console.log("fail");
-		}).always(function() {
-			input_url.removeClass('loading');
-		});
+		submitUrl(input_url, input_option);
+	});
+	input_url.keypress(function(e) {
+		if (e.which == 13) {
+			e.preventDefault();
+			$("form").submit();
+			submitUrl(input_url, input_option);
+		}
 	});
 
 	// On key Up show the options if something is in the field
