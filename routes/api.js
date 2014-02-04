@@ -1,5 +1,4 @@
-var check = require('validator').check,
-	sanitize = require('validator').sanitize,
+var check = require('validator'),
 	crypto = require('crypto'),
 	redis = require('redis'),
 	db = redis.createClient();
@@ -8,11 +7,21 @@ var check = require('validator').check,
 // Private Methods
 // ---------------------------------------------------
  
-var respond = function(res, token) {
-	res.json({
-		url: "http://sfwme.com/" + token
+var respondOk = function(res, token) {
+	res.json({ 
+		status: "OK",
+		data: { 
+			token: token
+		}
 	});
-}
+};
+
+var respondErr = function(res, msg) {
+	res.json({
+		status: "error",
+		message: msg
+	});
+};
 
 // ---------------------------------------------------
 // Export Methods
@@ -31,17 +40,11 @@ exports.index = function(req, res) {
 exports.save = function(req, res) {
 
 	// Validate data
-	var status;
 	url = req.body.url;
 	source = req.body.source;
 
-	try {
-		check(url).isUrl();
-	} catch(err) {
-		// 422 Unprocessable Entity
-		res.status(422).json({
-			error: err
-		});
+	if (!check.isURL(url)) {
+		respondErr(res);
 		return;
 	}
 
@@ -56,10 +59,10 @@ exports.save = function(req, res) {
 				var token = buf.toString('hex');
 				db.set(url, token, redis.print);
 
-				respond(res, token);
+				respondOk(res, token);
 			});
 		} else {
-			respond(res, reply);
+			respondOk(res, reply);
 		}
 	});
 };
