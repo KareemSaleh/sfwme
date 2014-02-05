@@ -1,4 +1,4 @@
-var check = require('validator'),
+var validator = require('validator'),
 	crypto = require('crypto'),
 	redis = require('redis'),
 	db = redis.createClient();
@@ -43,7 +43,7 @@ exports.save = function(req, res) {
 	url = req.body.url;
 	source = req.body.source;
 
-	if (!check.isURL(url)) {
+	if (!validator.isURL(url)) {
 		respondErr(res);
 		return;
 	}
