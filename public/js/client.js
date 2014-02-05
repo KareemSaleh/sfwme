@@ -6,6 +6,9 @@ var handleFailure = function() {
  * Handle when the AJAX is successful
  */
 var handleSuccess = function(data, textStatus, jqXHR) {
+	var div_result = $('#result');
+
+	div_result.fadeIn();
 
 }
 
