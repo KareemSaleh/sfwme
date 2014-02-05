@@ -3,6 +3,7 @@
  	<head>
 		<title><%= title %></title>
 		<link rel="stylesheet" href="//netdna.bootstrapcdn.com/bootstrap/3.1.0/css/bootstrap.min.css">
+		<link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/bootstrap-switch/2.0.1/css/bootstrap3/bootstrap-switch.min.css">
 		<link rel='stylesheet' href='stylesheets/style.css' />
 	</head>
 	<body>
@@ -46,15 +47,17 @@
 		<div id="options" class="container hidden">
 			<div class="row voffset3">
 				<div class="col-lg-12 text-center">
-					<div class="">
-						
-					</div>
+					<input id="nsfw" type="checkbox" data-on="danger" data-off="success" checked class="switch-large">
+				</div>
+				<div class="col-lg-12 text-center">
+					<p>Safe for work</p>
 				</div>
 			</div>
 		</div>
 
 		<script src="//ajax.googleapis.com/ajax/libs/jquery/1.11.0/jquery.min.js"></script>
 		<script src="//netdna.bootstrapcdn.com/bootstrap/3.1.0/js/bootstrap.min.js"></script>
+		<script src="//cdnjs.cloudflare.com/ajax/libs/bootstrap-switch/2.0.1/js/bootstrap-switch.min.js"></script>
 		<script src="js/client.js"></script>
 	</body>
 </html>
