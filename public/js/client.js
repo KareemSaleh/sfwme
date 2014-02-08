@@ -1,16 +1,41 @@
-var handleFailure = function() {
+/*
+ * Deals with dispaying the error or hiding it
+ */
+var toggleError = function(msg, on) {
+	var div_error = $('#error-msg');
+	var span_msg = $('#error-msg span');
 
-}
+	if (on) {
+		span_msg.text(msg);
+		div_error.fadeIn();
+	} else {
+		div_error.hide();
+	}
+};
+
+/*
+ * Handle when the AJAX fails
+ */
+var handleFailure = function() {
+	toggleError("Something has gone terribly wrong.", true);
+};
 
 /*
  * Handle when the AJAX is successful
  */
 var handleSuccess = function(data, textStatus, jqXHR) {
 	var div_result = $('#result');
+	var div_redirect_url = $('#redirect-url');
 
-	div_result.fadeIn();
 
-}
+	// Populate the redirect
+	if (data.status == "OK") {
+		div_redirect_url.text(data.data.token);
+		div_result.fadeIn();
+	} else {
+		toggleError(data.msg, true)
+	}
+};
 
 /*
  * Submit the URL to the SFWMe API
@@ -18,7 +43,7 @@ var handleSuccess = function(data, textStatus, jqXHR) {
 var submitUrl = function(input_url, input_safe) {
 	input_url.addClass('loading');
 
-	$.post("save", { 
+	$.post("save", {
 		url: input_url.val(), 
 		safe: input_safe.val(), 
 		source: "web" }, 
@@ -60,8 +85,11 @@ $(document).ready(function() {
 		if(value && value.length > 0) {
 			div_options.removeClass('hidden');
 			div_options.fadeIn();
+			btn_go.removeClass('disabled');
+			toggleError("", false);
 		} else {
 			div_options.fadeOut();
+			btn_go.addClass('disabled');
 		}
 	});
 });

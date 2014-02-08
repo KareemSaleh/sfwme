@@ -19,7 +19,7 @@ var respondOk = function(res, token) {
 var respondErr = function(res, msg) {
 	res.json({
 		status: "error",
-		message: msg
+		msg: msg
 	});
 };
 
@@ -44,7 +44,7 @@ exports.save = function(req, res) {
 	source = req.body.source;
 
 	if (!validator.isURL(url)) {
-		respondErr(res);
+		respondErr(res, "Your URL seems to be Invalid.");
 		return;
 	}
 
