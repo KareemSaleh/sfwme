@@ -32,8 +32,9 @@ var handleSuccess = function(data, textStatus, jqXHR) {
 	if (data.status == "OK") {
 		div_redirect_url.text(data.data.token);
 		div_result.fadeIn();
+		toggleError("", false);
 	} else {
-		toggleError(data.msg, true)
+		toggleError(data.msg, true);
 	}
 };
 
@@ -76,6 +77,8 @@ $(document).ready(function() {
 		if (e.which == 13) {
 			e.preventDefault();
 			submitUrl(input_url, input_nsfw);
+		} else {
+			toggleError("", false);
 		}
 	});
 
@@ -86,7 +89,6 @@ $(document).ready(function() {
 			div_options.removeClass('hidden');
 			div_options.fadeIn();
 			btn_go.removeClass('disabled');
-			toggleError("", false);
 		} else {
 			div_options.fadeOut();
 			btn_go.addClass('disabled');
