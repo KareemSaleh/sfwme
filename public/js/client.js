@@ -41,12 +41,12 @@ var handleSuccess = function(data, textStatus, jqXHR) {
 /*
  * Submit the URL to the SFWMe API
  */
-var submitUrl = function(input_url, input_safe) {
+var submitUrl = function(input_url, nsfw) {
 	input_url.addClass('loading');
 
 	$.post("save", {
 		url: input_url.val(), 
-		safe: input_safe.val(), 
+		nsfw: nsfw, 
 		source: "web" }, 
 		handleSuccess)
 	.fail(handleFailure)
@@ -71,12 +71,12 @@ $(document).ready(function() {
 
 	// Btn click & Htting the enter button.
 	btn_go.on('click', function() {
-		submitUrl(input_url, input_nsfw);
+		submitUrl(input_url, input_nsfw.is(':checked'));
 	});
 	input_url.keypress(function(e) {
 		if (e.which == 13) {
 			e.preventDefault();
-			submitUrl(input_url, input_nsfw);
+			submitUrl(input_url, input_nsfw.is(':checked'));
 		} else {
 			toggleError("", false);
 		}

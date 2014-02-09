@@ -40,8 +40,9 @@ exports.index = function(req, res) {
 exports.save = function(req, res) {
 
 	// Validate data
-	url = req.body.url;
-	source = req.body.source;
+	var url = req.body.url;
+	var nsfw = req.body.nsfw;
+	var source = req.body.source;
 
 	if (!validator.isURL(url)) {
 		respondErr(res, "Your URL seems to be Invalid.");
@@ -57,12 +58,12 @@ exports.save = function(req, res) {
 			// Generate unique (ish) token and save
 			crypto.randomBytes(4, function(ex, buf) {
 				var token = buf.toString('hex');
-				db.set(url, token, redis.print);
+				db.set(url, {nsfw: nsfw, token:token}, redis.print);
 
 				respondOk(res, token);
 			});
-		} else {
-			respondOk(res, reply);
+		} else {	
+			respondOk(res, reply.token);
 		}
 	});
 };
