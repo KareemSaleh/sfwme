@@ -5,10 +5,12 @@ var resetCtrls = function() {
 	var to_hide = $('#error-msg, #result, #options');
 	var input_url = $('#input-url');
 	var input_go = $('#btn-go');
+	var div_redirect_url = $('#redirect-url');
 
 	to_hide.hide();
 	input_url.removeAttr('disabled');
 	input_go.removeClass('disabled');
+	div_redirect_url.text('');
 };
 
 /*
@@ -110,6 +112,7 @@ $(document).ready(function() {
 		}
 	});
 
+	// Link to reset the controls.
 	link_start.on('click', function() {
 		resetCtrls();
 	});
