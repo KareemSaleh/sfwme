@@ -54,7 +54,6 @@ exports.save = function(req, res) {
 		
 		// reply is null when the key is missing
 		if (!reply) {
-			
 			// Generate unique (ish) token and save
 			crypto.randomBytes(4, function(ex, buf) {
 				var token = buf.toString('hex');
@@ -62,7 +61,7 @@ exports.save = function(req, res) {
 
 				respondOk(res, token);
 			});
-		} else {	
+		} else {
 			respondOk(res, reply.token);
 		}
 	});
