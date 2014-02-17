@@ -50,14 +50,14 @@ exports.save = function(req, res) {
 	}
 
 	// Is this url already in our db?
-	db.get(url, function(err, reply) {
+	db.hgetall(url, function(err, reply) {
 		
 		// reply is null when the key is missing
 		if (!reply) {
 			// Generate unique (ish) token and save
 			crypto.randomBytes(3, function(ex, buf) {
 				var token = buf.toString('hex');
-				db.set(url, {nsfw: nsfw, token:token}, redis.print);
+				db.hmset(url, {nsfw: nsfw, token:token}, redis.print);
 
 				respondOk(res, token);
 			});
