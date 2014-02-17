@@ -55,7 +55,7 @@ exports.save = function(req, res) {
 		// reply is null when the key is missing
 		if (!reply) {
 			// Generate unique (ish) token and save
-			crypto.randomBytes(4, function(ex, buf) {
+			crypto.randomBytes(3, function(ex, buf) {
 				var token = buf.toString('hex');
 				db.set(url, {nsfw: nsfw, token:token}, redis.print);
 
