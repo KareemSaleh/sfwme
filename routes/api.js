@@ -2,6 +2,8 @@ var validator = require('validator'),
 	crypto = require('crypto'),
 	redis = require('redis'),
 	db = redis.createClient();
+
+const BASE_URL = process.env.BASE_URL;
  
 // ---------------------------------------------------
 // Private Methods
@@ -11,7 +13,8 @@ var respondOk = function(res, token) {
 	res.json({ 
 		status: "OK",
 		data: { 
-			token: token
+			token: token,
+			base: BASE_URL
 		}
 	});
 };
@@ -58,6 +61,7 @@ exports.save = function(req, res) {
 			crypto.randomBytes(3, function(ex, buf) {
 				var token = buf.toString('hex');
 				db.hmset(url, {nsfw: nsfw, token:token}, redis.print);
+				db.hmset(token, url, redis.print);
 
 				respondOk(res, token);
 			});

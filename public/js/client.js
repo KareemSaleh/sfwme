@@ -44,7 +44,7 @@ var handleSuccess = function(data, textStatus, jqXHR) {
 
 	// Populate the redirect
 	if (data.status == "OK") {
-		div_redirect_url.text(data.data.token);
+		div_redirect_url.text(data.data.base + "/" + data.data.token);
 		div_result.fadeIn();
 		toggleError("", false);
 		inputs.attr('disabled', 'disabled');
