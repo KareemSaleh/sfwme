@@ -3,13 +3,12 @@
  */
 var resetCtrls = function() {
 	var to_hide = $('#error-msg, #result, #options');
-	var input_url = $('#input-url');
-	var input_go = $('#btn-go');
+	var inputs = $('#input-url, #nsfw, #btn-go');
 	var div_redirect_url = $('#redirect-url');
 
+
 	to_hide.hide();
-	input_url.removeAttr('disabled');
-	input_go.removeClass('disabled');
+	inputs.removeAttr('disabled');
 	div_redirect_url.text('');
 };
 
@@ -41,14 +40,14 @@ var handleFailure = function() {
 var handleSuccess = function(data, textStatus, jqXHR) {
 	var div_result = $('#result');
 	var div_redirect_url = $('#redirect-url');
-	var input_url = $('#input-url');
+	var inputs = $('#input-url, #nsfw, #btn-go');
 
 	// Populate the redirect
 	if (data.status == "OK") {
 		div_redirect_url.text(data.data.token);
 		div_result.fadeIn();
 		toggleError("", false);
-		input_url.attr('disabled', 'disabled');
+		inputs.attr('disabled', 'disabled');
 	} else {
 		toggleError(data.msg, true);
 	}
