@@ -22,7 +22,5 @@ exports.redirect = function(req, res){
 
 	// TODO: If it exists redirect and log the hit
 
-	// TODO: Fetch the 
-
-	res.send("Redirect");
+	res.render('redirect', { title: 'SFWMe: NSFW!' });
 };
