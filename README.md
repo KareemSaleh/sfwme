@@ -22,3 +22,4 @@ TODO v2
 * Chozen of pre-definded reasons.
 * Random redirect page messages and cancel actions.
 * Stats of most used reasons and redirects.
+* Email me this link later button.

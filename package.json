@@ -22,6 +22,7 @@
 		"ejs": "*",
 		"less-middleware": "*",
 		"redis": "*",
-		"validator": "*"
+		"validator": "*",
+		"mongodb": "*"
 	}
 }
