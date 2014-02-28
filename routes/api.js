@@ -61,7 +61,7 @@ exports.save = function(req, res) {
 			crypto.randomBytes(3, function(ex, buf) {
 				var token = buf.toString('hex');
 				db.hmset(url, {nsfw: nsfw, token:token}, redis.print);
-				db.hmset(token, url, redis.print);
+				db.hmset(token, {url: url}, redis.print);
 
 				respondOk(res, token);
 			});
