@@ -26,6 +26,19 @@ var respondErr = function(res, msg) {
 	});
 };
 
+/**
+ * Save to redis cache for quick retrieval later. We save two entries: One where
+ * the URL is the key and the other where the token is the key for quick reference.
+ * 
+ * @param  {string} 	token Hex string that uniquely identifies this entry
+ * @param  {string} 	url   url being shortened
+ * @param  {boolean} 	nsfw  true if this lnk is NSFW
+ */
+var cacheIt = function(token, url, nsfw) {
+	db.hmset(url, {nsfw: nsfw, token:token}, redis.print);
+	db.hmset(token, {url: url}, redis.print);
+}
+
 // ---------------------------------------------------
 // Export Methods
 // ---------------------------------------------------
@@ -54,14 +67,14 @@ exports.save = function(req, res) {
 
 	// Is this url already in our db?
 	db.hgetall(url, function(err, reply) {
-		
+
 		// reply is null when the key is missing
 		if (!reply) {
 			// Generate unique (ish) token and save
 			crypto.randomBytes(3, function(ex, buf) {
 				var token = buf.toString('hex');
-				db.hmset(url, {nsfw: nsfw, token:token}, redis.print);
-				db.hmset(token, {url: url}, redis.print);
+				//saveIt(token, url, nsfw);
+				cacheIt(token, url, nsfw);
 
 				respondOk(res, token);
 			});
