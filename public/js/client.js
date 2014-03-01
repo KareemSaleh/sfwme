@@ -4,12 +4,11 @@
 var resetCtrls = function() {
 	var to_hide = $('#error-msg, #result, #options');
 	var inputs = $('#input-url, #nsfw, #btn-go');
-	var div_redirect_url = $('#redirect-url');
-
 
 	to_hide.hide();
 	inputs.removeAttr('disabled');
-	div_redirect_url.text('');
+	$('#redirect-url').text('');
+	$('#input-url').focus();
 };
 
 /*
