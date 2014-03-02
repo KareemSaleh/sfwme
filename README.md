@@ -18,7 +18,7 @@ TODO v1
 TODO v2
 -------
 
-* Ads?
+* Ads? (The green button shown on redirect could be non intrusive)
 * Chozen of pre-definded reasons.
 * Random redirect page messages and cancel actions.
 * Stats of most used reasons and redirects.
