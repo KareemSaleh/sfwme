@@ -6,6 +6,10 @@ var validator = require('validator'),
     format = require('util').format;
 
 const BASE_URL = process.env.BASE_URL;
+
+// Mongo Enviro Variables
+var host = process.env['MONGO_NODE_DRIVER_HOST'] != null ? process.env['MONGO_NODE_DRIVER_HOST'] : 'localhost';
+var port = process.env['MONGO_NODE_DRIVER_PORT'] != null ? process.env['MONGO_NODE_DRIVER_PORT'] : 27017;
  
 // ---------------------------------------------------
 // Private Methods
@@ -42,7 +46,10 @@ var cacheIt = function(token, url, nsfw) {
 }
 
 var saveIt = function(token, url, nsfw) {
-	MongoClient.connect('mongodb://127.0.0.1:27017/test', function(err, db) {
+
+console.log(host);
+console.log(port);
+	mongodb.connect(format("mongodb://%s:%s/", host, port), function(err, db) {
 		if(err) throw err;
 
 		var collection = db.collection('test_insert');
@@ -97,8 +104,12 @@ exports.save = function(req, res) {
 			// Generate unique (ish) token and save
 			crypto.randomBytes(3, function(ex, buf) {
 				var token = buf.toString('hex');
-				//saveIt(token, url, nsfw);
-				cacheIt(token, url, nsfw);
+				try {
+					saveIt(token, url, nsfw);
+					cacheIt(token, url, nsfw);
+				} catch (e) {
+					console.log("Failed to save url: " + url + "error: " + e);
+				}
 
 				respondOk(res, token);
 			});
