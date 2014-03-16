@@ -96,6 +96,8 @@ exports.save = function(req, res) {
 		return;
 	}
 
+	url = url.toLowerCase();
+
 	// Is this url already in our db?
 	redisdb.hgetall(url, function(err, reply) {
 
