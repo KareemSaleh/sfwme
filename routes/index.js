@@ -8,7 +8,7 @@ exports.index = function(req, res){
 };
 
 exports.popular = function(req, res){
-	res.render('contact', { title: 'SFWMe' });
+	res.render('popular', { title: 'SFWMe' });
 }
 
 exports.about = function(req, res){
