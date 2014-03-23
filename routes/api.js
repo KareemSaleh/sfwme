@@ -47,13 +47,13 @@ var cacheIt = function(token, url, nsfw) {
 
 var saveIt = function(token, url, nsfw) {
 
-console.log(host);
-console.log(port);
 	mongodb.connect(format("mongodb://%s:%s/", host, port), function(err, db) {
 		if(err) throw err;
 
-		var collection = db.collection('test_insert');
-		collection.insert({a:2}, function(err, docs) {
+		var collection = db.collection('url_list');
+		collection.update({url: url}, {$set: {nsfw: nsfw, token: token}}, {w:1, safe:true, upsert:true}, function(err) {
+
+			console.log(err);
 
 			collection.count(function(err, count) {
 				console.log(format("count = %s", count));
@@ -96,8 +96,6 @@ exports.save = function(req, res) {
 		return;
 	}
 
-	url = url.toLowerCase();
-
 	// Is this url already in our db?
 	redisdb.hgetall(url, function(err, reply) {
 
@@ -116,6 +114,7 @@ exports.save = function(req, res) {
 				respondOk(res, token);
 			});
 		} else {
+			console.log("CACHE: URL '" + url + "' with token '" + reply.token + "' exists in cache")
 			respondOk(res, reply.token);
 		}
 	});
