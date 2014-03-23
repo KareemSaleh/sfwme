@@ -40,7 +40,7 @@ app.post('/save', api.save);
 app.get('/', routes.index);
 app.get('/popular', routes.popular);
 app.get('/about', routes.about);
-app.get('/:id', routes.redirect);
+app.get('/:token', routes.redirect);
 
 http.createServer(app).listen(app.get('port'), function(){
 	console.log('Express server listening on port ' + app.get('port'));

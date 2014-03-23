@@ -1,7 +1,31 @@
+var redis = require('redis'),
+	redisdb = redis.createClient(),
+	mongodb = require('mongodb').MongoClient,
+	format = require('util').format;
 
-/*
- * GET home page.
- */
+var adCollection = new Array(
+		{ adUrl: "https://images.google.ca/search?q=Kittens", adText: "Show me Kittens!" },
+		{ adUrl: "https://images.google.ca/search?q=Puppies", adText: "Show me Puppies!" }
+	);
+
+// Mongo Enviro Variables
+var host = process.env['MONGO_NODE_DRIVER_HOST'] != null ? process.env['MONGO_NODE_DRIVER_HOST'] : 'localhost';
+var port = process.env['MONGO_NODE_DRIVER_PORT'] != null ? process.env['MONGO_NODE_DRIVER_PORT'] : 27017;
+
+var redirectMe = function(res, urlObj) {
+	
+	selectedAd = adCollection[Math.floor((Math.random()*2))];
+
+	// Is it Safe For Work?
+	if (urlObj.nsfw) {
+		res.render('redirect', { title: 'SFWMe: NSFW!', url: urlObj.url, 
+			adUrl: selectedAd.adUrl, adText: selectedAd.adText });
+	} else if (urlObj.url) {
+		res.redirect(urlObj.url);
+	} else {
+		res.redirect(process.env.BASE_URL);
+	}
+}
 
 exports.index = function(req, res){
 	res.render('index', { title: 'SFWMe' });
@@ -16,11 +40,26 @@ exports.about = function(req, res){
 }
 
 exports.redirect = function(req, res){
- 	// TODO: Check if this URL exists in our storage
+ 	// Check if this URL exists in our cache
+	redisdb.hgetall(req.params.token, function(err, reply) {
 
-	// TODO: Is it Safe For Work?
+		// Reply is null when the key is missing. Check DB.
+		if (!reply) {
+			mongodb.connect(format("mongodb://%s:%s/", host, port), function(err, db) {
+				if(err) throw err;
 
-	// TODO: If it exists redirect and log the hit
+				var collection = db.collection('url_list');
+				reply = collection.findOne({ token:req.params.token }, console.log);
+				
+				if (!reply) {
+					res.render('404', { });
+					return;
+				}
 
-	res.render('redirect', { title: 'SFWMe: NSFW!' });
+				redirectMe(res, reply);
+			});
+		} else {
+			redirectMe(res, reply);
+		}
+	});
 };

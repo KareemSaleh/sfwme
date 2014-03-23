@@ -41,8 +41,9 @@ var respondErr = function(res, msg) {
  * @param  {boolean} 	nsfw  true if this lnk is NSFW
  */
 var cacheIt = function(token, url, nsfw) {
-	redisdb.hmset(url, {nsfw: nsfw, token:token}, redis.print);
-	redisdb.hmset(token, {url: url}, redis.print);
+	// TODO: Add Expirations
+	redisdb.hmset(url, { nsfw: nsfw, token:token }, redis.print); // For fast autocomplete
+	redisdb.hmset(token, { url: url, nsfw: nsfw }, redis.print); // For fast redirecting
 }
 
 var saveIt = function(token, url, nsfw) {

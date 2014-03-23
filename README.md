@@ -17,7 +17,7 @@ export BASE_URL='sfwme.com'
 TODO v1
 -------
 
-* Save to Actual DB (mongo/mysql?) so we are lossless on tokens.
+* Support https quick switch and pasting validation.
 * Redirecting.
 * Kittens/Puppy logic.
 * About Page content.
@@ -30,6 +30,7 @@ TODO v2
 -------
 
 * Ads? (The green button shown on redirect could be non intrusive)
+* Cache expirations
 * Chozen of pre-definded reasons.
 * Random redirect page messages and cancel actions.
 * Stats of most used reasons and redirects.
