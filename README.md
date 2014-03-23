@@ -19,9 +19,6 @@ TODO v1
 
 * Support https quick switch and pasting validation.
 * Redirecting.
-* Kittens/Puppy logic.
-* About Page content.
-* Contact/Support Page content.
 * Obfuscation (JS/CSS).
 * 404 with redirect to submit page.
 
