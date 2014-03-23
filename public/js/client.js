@@ -111,7 +111,8 @@ $(document).ready(function() {
 	});
 
 	// Link to reset the controls.
-	link_start.on('click', function() {
+	link_start.on('click', function(e) {
+		e.preventDefault();
 		resetCtrls();
 	});
 });
