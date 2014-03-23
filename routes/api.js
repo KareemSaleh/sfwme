@@ -51,7 +51,7 @@ var saveIt = function(token, url, nsfw) {
 	mongodb.connect(format("mongodb://%s:%s/", host, port), function(err, db) {
 		if(err) throw err;
 
-		var collection = db.collection('url_list');
+		var collection = db.collection('urls');
 		collection.update({url: url}, {$set: {nsfw: nsfw, token: token}}, {w:1, safe:true, upsert:true}, function(err) {
 
 			console.log(err);

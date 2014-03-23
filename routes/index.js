@@ -4,8 +4,8 @@ var redis = require('redis'),
 	format = require('util').format;
 
 var adCollection = new Array(
-		{ adUrl: "https://images.google.ca/search?q=Kittens", adText: "Show me Kittens!" },
-		{ adUrl: "https://images.google.ca/search?q=Puppies", adText: "Show me Puppies!" }
+		{ adUrl: "https://google.com/search?site=&tbm=isch&q=kittens", adText: "Show me Kittens!" },
+		{ adUrl: "https://google.com/search?site=&tbm=isch&q=puppies", adText: "Show me Puppies!" }
 	);
 
 // Mongo Enviro Variables
