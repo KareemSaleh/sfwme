@@ -17,8 +17,6 @@ export BASE_URL='sfwme.com'
 TODO v1
 -------
 
-* Support https quick switch and pasting validation.
-* Redirecting.
 * Obfuscation (JS/CSS).
 * 404 with redirect to submit page.
 

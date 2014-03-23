@@ -8,6 +8,7 @@ var resetCtrls = function() {
 	to_hide.hide();
 	inputs.removeAttr('disabled');
 	$('#redirect-url').text('');
+	$('#protocol').text('http://')
 	$('#input-url').focus();
 };
 
@@ -52,16 +53,30 @@ var handleSuccess = function(data, textStatus, jqXHR) {
 	}
 };
 
+var validateProtocol = function(url) {
+	var input_url = $('#input-url'),
+		protocol = $('#protocol');
+
+	if (url.indexOf('http://') != -1) {
+		input_url.val(url.replace('http://', ''));
+		protocol.text('http://');
+	} else if (url.indexOf('https://') != -1) {
+		input_url.val(url.replace('https://', ''));
+		protocol.text('https://');
+	}
+}
+
 /*
  * Submit the URL to the SFWMe API
  */
-var submitUrl = function(input_url, nsfw) {
+var submitUrl = function(input_url, nsfw, protocol) {
 	input_url.addClass('loading');
 
 	$.post("save", {
 		url: input_url.val(), 
 		nsfw: nsfw, 
-		source: "web" }, 
+		source: "web",
+		protocol: protocol }, 
 		handleSuccess)
 	.fail(handleFailure)
 	.always(function() {
@@ -73,11 +88,12 @@ var submitUrl = function(input_url, nsfw) {
  * jQuery Ready function
  */
 $(document).ready(function() {
-	var input_url = $('#input-url');
-	var btn_go = $('#btn-go');
-	var div_options = $('#options');
-	var input_nsfw = $('#nsfw');
-	var link_start = $('#link-start');
+	var input_url = $('#input-url'),
+		btn_go = $('#btn-go'),
+		div_options = $('#options'),
+		input_nsfw = $('#nsfw'),
+		link_start = $('#link-start'),
+		protocol = $('#protocol');
 
 	// Init Bootstrap-switch (stylized checkboxes)
 	input_nsfw.bootstrapSwitch();
@@ -86,12 +102,12 @@ $(document).ready(function() {
 
 	// Btn click & Htting the enter button.
 	btn_go.on('click', function() {
-		submitUrl(input_url, input_nsfw.is(':checked'));
+		submitUrl(input_url, input_nsfw.is(':checked'), protocol.text());
 	});
 	input_url.keypress(function(e) {
 		if (e.which == 13) {
 			e.preventDefault();
-			submitUrl(input_url, input_nsfw.is(':checked'));
+			submitUrl(input_url, input_nsfw.is(':checked'), protocol.text());
 		} else {
 			toggleError("", false);
 		}
@@ -108,6 +124,8 @@ $(document).ready(function() {
 			div_options.fadeOut();
 			btn_go.addClass('disabled');
 		}
+
+		validateProtocol(value);
 	});
 
 	// Link to reset the controls.

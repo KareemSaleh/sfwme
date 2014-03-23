@@ -88,7 +88,7 @@ exports.index = function(req, res) {
 exports.save = function(req, res) {
 
 	// Validate data
-	var url = req.body.url;
+	var url = req.body.protocol + req.body.url;
 	var nsfw = req.body.nsfw;
 	var source = req.body.source;
 
