@@ -21,13 +21,13 @@ TODO v1
 * Analytics
 * Favicon
 * Obfuscation (JS/CSS).
-* 404 with redirect to submit page.
 
 
 TODO v2
 -------
 
 * Ads? (The green button shown on redirect could be non intrusive)
+* Popular Links Page
 * Cache expirations
 * Chozen of pre-definded reasons.
 * Random redirect page messages and cancel actions.
