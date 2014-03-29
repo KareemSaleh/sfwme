@@ -17,7 +17,6 @@ export BASE_URL='sfwme.com'
 TODO v1
 -------
 
-* Analytics
 * Favicon
 * Obfuscation (JS/CSS).
 
