@@ -52,7 +52,7 @@ exports.redirect = function(req, res){
 				reply = collection.findOne({ token:req.params.token }, console.log);
 				
 				if (!reply) {
-					res.render('404', { });
+					res.render('404', { title: "Oops! 404 Not Found!" });
 					return;
 				}
 
