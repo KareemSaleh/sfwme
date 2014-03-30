@@ -18,7 +18,9 @@ TODO v1
 -------
 
 * Favicon
-* Obfuscation (JS/CSS).
+* Obfuscation (JS/CSS)
+* Ensure latest versions of deps are locked in.
+
 
 
 TODO v2
@@ -31,3 +33,4 @@ TODO v2
 * Random redirect page messages and cancel actions.
 * Stats of most used reasons and redirects.
 * Email me this link later button.
+* Ensure latest versions of deps are locked in.
