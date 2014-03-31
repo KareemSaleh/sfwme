@@ -3,12 +3,13 @@
  * Module dependencies.
  */
 
-var express = require('express');
-var routes = require('./routes');
-var api = require('./routes/api');
-var http = require('http');
-var path = require('path');
-var check = require('validator').check;
+var express = require('express'),
+	routes = require('./routes'),
+	api = require('./routes/api'),
+	http = require('http'),
+	path = require('path'),
+	check = require('validator').check,
+	compressor = require('node-minify');
 
 var app = express();
 
@@ -29,8 +30,18 @@ app.use(express.static(path.join(__dirname, 'public')));
 
 // development only
 if ('development' == app.get('env')) {
-  	app.use(express.errorHandler());
-}
+	app.use(express.errorHandler());
+} //else {
+
+// Minify our client side JS
+new compressor.minify({
+	type: 'gcc',
+	fileIn: 'public/js/client.js',
+	fileOut: 'public/js/client.min.js',
+	callback: function(err, min){
+		console.log("JS Minified");
+	}
+});
 
 // Api routes
 app.get('/api', api.index);

@@ -1,5 +1,6 @@
 {
 	"name": "sfwme",
+	"main":"app",
 	"description": "Not for censoring, for avoiding akwardness.",
 	"version": "0.0.1",
 	"private": true,
@@ -23,6 +24,7 @@
 		"less-middleware": "*",
 		"redis": "*",
 		"validator": "*",
-		"mongodb": "*"
+		"mongodb": "*",
+		"node-minify": "*"
 	}
 }
