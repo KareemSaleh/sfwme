@@ -37,7 +37,7 @@ if ('development' == app.get('env')) {
 new compressor.minify({
 	type: 'gcc',
 	fileIn: 'public/js/client.js',
-	fileOut: 'public/js/client.min.js',
+	fileOut: 'public/js/sfwme.min.js',
 	callback: function(err, min){
 		console.log("JS Minified");
 	}

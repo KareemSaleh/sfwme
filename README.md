@@ -18,10 +18,7 @@ TODO v1
 -------
 
 * Favicon
-* Obfuscation (JS/CSS)
 * Ensure latest versions of deps are locked in.
-
-
 
 TODO v2
 -------
