@@ -16,7 +16,7 @@ export BASE_URL='sfwme.com'
 
 TODO v0.1.x Known Bugs
 ------------------
-
+* Problem where validator seems to hang on repeat-pattern long input strings for URL
 
 TODO v0.2.x
 -------
