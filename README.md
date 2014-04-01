@@ -17,7 +17,6 @@ export BASE_URL='sfwme.com'
 TODO v1
 -------
 
-* Favicon
 * Ensure latest versions of deps are locked in.
 
 TODO v2
