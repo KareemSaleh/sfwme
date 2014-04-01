@@ -53,19 +53,9 @@ var saveIt = function(token, url, nsfw) {
 
 		var collection = db.collection('urls');
 		collection.update({url: url}, {$set: {nsfw: nsfw, token: token}}, {w:1, safe:true, upsert:true}, function(err) {
-
-			console.log(err);
-
-			collection.count(function(err, count) {
-				console.log(format("count = %s", count));
-			});
-
-			// Locate all the entries using find
-			collection.find().toArray(function(err, results) {
-				console.dir(results);
-				// Let's close the db
-				db.close();
-			});
+			if (err) {
+				console.log(err);
+			}
 		});
 	});
 }
