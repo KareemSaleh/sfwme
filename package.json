@@ -2,7 +2,7 @@
 	"name": "sfwme",
 	"main":"app",
 	"description": "Not for censoring, for avoiding akwardness.",
-	"version": "0.0.1",
+	"version": "0.1.0",
 	"private": true,
 	"author" : 
 	{
@@ -20,11 +20,11 @@
 	},
 	"dependencies": {
 		"express": "3.x",
-		"ejs": "*",
-		"less-middleware": "*",
-		"redis": "*",
-		"validator": "*",
-		"mongodb": "*",
-		"node-minify": "*"
+		"ejs": "1.x",
+		"less-middleware": "0.2.x",
+		"redis": "0.10.x",
+		"validator": "3.x",
+		"mongodb": "1.4.x",
+		"node-minify": "0.10.x"
 	}
 }

@@ -14,12 +14,11 @@ export NODE_ENV='production'
 export BASE_URL='sfwme.com'
 ```
 
-TODO v1
--------
+TODO v0.1.x Known Bugs
+------------------
 
-* Ensure latest versions of deps are locked in.
 
-TODO v2
+TODO v0.2.x
 -------
 
 * Ads? (The green button shown on redirect could be non intrusive)
