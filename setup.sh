@@ -11,4 +11,4 @@ export MONGO_NODE_DRIVER_PORT=27017
 export NODE_ENV='production'
 
 # Start the Server using forever
-forever -a start -l logs/forever.log -o logs/sfwme.log -e logs/err.log app.js
+forever -a start -l ./logs/forever.log -o ./logs/sfwme.log -e ./logs/err.log app.js
