@@ -3,6 +3,11 @@ sfwme
 
 Not for censoring. For avoiding akwardness.
 
+Get it
+------
+
+`git clone -o personal git@github.com:KareemSaleh/sfwme.git sfwme`
+
 Deployment Notes
 ----------------
 
