@@ -8,10 +8,11 @@ Deployment Notes
 
 Ensure environment is setup with the following.
 ```
-export MONGO_NODE_DRIVER_HOST='sfwme.com'
+export BASE_URL='sfwme.com'
+export PORT=80
+export MONGO_NODE_DRIVER_HOST=$BASE_URL
 export MONGO_NODE_DRIVER_PORT=27017
 export NODE_ENV='production'
-export BASE_URL='sfwme.com'
 ```
 
 TODO v0.1.x Known Bugs
