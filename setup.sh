@@ -11,4 +11,4 @@ export NODE_ENV='production'
 npm update
 
 # Start the Server using forever
-forever start -l forever.log -o sfwme.log -e err.log app.js
+forever -a start -l forever.log -o sfwme.log -e err.log app.js
