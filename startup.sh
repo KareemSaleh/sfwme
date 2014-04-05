@@ -1,8 +1,5 @@
 #!/bin/sh
 
-# Update our dependencies
-npm update
-
 # Set ENV variables
 export BASE_URL='sfwme.com'
 export PORT=80
