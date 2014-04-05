@@ -3,10 +3,13 @@ var redis = require('redis'),
 	mongodb = require('mongodb').MongoClient,
 	format = require('util').format;
 
-var adCollection = new Array(
+var adCollection = [
 		{ adUrl: "https://google.com/search?site=&tbm=isch&q=kittens", adText: "Show me Kittens!" },
 		{ adUrl: "https://google.com/search?site=&tbm=isch&q=puppies", adText: "Show me Puppies!" }
-	);
+	];
+var placeholders = [ "example", "ewww", "nsfw", "naughylink", "gross", "NotPoliticallyCorrect", 
+					 "WhyWouldYouSendThis", "horrible", "NotAppropriate"];
+var domains = [ ".org", ".com", ".net", ".me", ".co.uk"];
 
 // Mongo Enviro Variables
 var host = process.env['MONGO_NODE_DRIVER_HOST'] != null ? process.env['MONGO_NODE_DRIVER_HOST'] : 'localhost';
@@ -14,7 +17,7 @@ var port = process.env['MONGO_NODE_DRIVER_PORT'] != null ? process.env['MONGO_NO
 
 var redirectMe = function(res, urlObj) {
 	
-	selectedAd = adCollection[Math.floor((Math.random()*2))];
+	selectedAd = adCollection[Math.floor((Math.random()*adCollection))];
 
 	// Is it Safe For Work?
 	if (urlObj.nsfw) {
@@ -28,7 +31,12 @@ var redirectMe = function(res, urlObj) {
 }
 
 exports.index = function(req, res){
-	res.render('index', { title: 'SFWMe' });
+	
+	// Randomize possible place holders to spice things up a little!
+	url = "www." + placeholders[Math.floor((Math.random()*placeholders.length))] + 
+		domains[Math.floor((Math.random()*domains.length))];
+
+	res.render('index', { title: 'SFWMe', placeholder: url });
 };
 
 exports.popular = function(req, res){

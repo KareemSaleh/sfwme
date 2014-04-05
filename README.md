@@ -23,7 +23,6 @@ export BASE_PATH=$HOME/sfwme
 
 TODO v0.1.x Known Bugs
 ------------------
-* Add "NaughtyLink.com etc" to place holder.
 * Add description of how to advertise on this site.
 * Add API examples on the API page
 * Could add node-monitor to monitor application performance
