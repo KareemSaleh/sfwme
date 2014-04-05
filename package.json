@@ -25,6 +25,8 @@
 		"redis": "0.10.x",
 		"validator": "3.x",
 		"mongodb": "1.4.x",
-		"node-minify": "0.10.x"
+		"node-minify": "0.10.x",
+		"monitor": "*",
+		"monitor-dashboard": "*"
 	}
 }

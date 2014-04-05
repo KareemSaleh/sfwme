@@ -9,7 +9,8 @@ var express = require('express'),
 	http = require('http'),
 	path = require('path'),
 	check = require('validator').check,
-	compressor = require('node-minify');
+	compressor = require('node-minify'),
+	monitor = require('monitor');
 
 var app = express();
 
@@ -26,6 +27,7 @@ app.use(express.cookieParser('ftNBUSAk4wGj'));
 app.use(app.router);
 app.use(require('less-middleware')(path.join(__dirname, 'public')));
 app.use(express.static(path.join(__dirname, 'public')));
+monitor.start();
 
 // development only
 if ('development' == app.get('env')) {

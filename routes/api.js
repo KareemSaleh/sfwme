@@ -69,7 +69,7 @@ var saveIt = function(token, url, nsfw) {
  * Index endpoint. Lets put some direction here
  */
 exports.index = function(req, res) {
-	res.send("respond with a index");
+	res.send("API Documentation coming soon.");
 };
 
 /*
