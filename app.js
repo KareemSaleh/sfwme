@@ -38,7 +38,11 @@ new compressor.minify({
 	fileIn: 'public/js/client.js',
 	fileOut: 'public/js/sfwme.min.js',
 	callback: function(err, min){
-		console.log("JS Minified");
+		if (err) {
+			console.log("Error minifying JS: " + err);
+		} else {
+			console.log("JS Minified");
+		}
 	}
 });
 
