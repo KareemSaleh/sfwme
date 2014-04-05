@@ -27,7 +27,6 @@ TODO v0.1.x Known Bugs
 * Add description of how to advertise on this site.
 * Add API examples on the API page
 * Could add node-monitor to monitor application performance
-* About link isnt selected on the about page
 * Problem where validator seems to hang on repeat-pattern long input strings for URL
 
 TODO v0.2.x

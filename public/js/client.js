@@ -93,7 +93,18 @@ $(document).ready(function() {
 		div_options = $('#options'),
 		input_nsfw = $('#nsfw'),
 		link_start = $('#link-start'),
-		protocol = $('#protocol');
+		protocol = $('#protocol'),
+		nav = $('.nav > li');
+
+	// Update the navigation bar to reflect the page we're on
+	var pathname = window.location.pathname;
+	switch (pathname.toLowerCase()) {
+		case '/about':
+			$('#nav_about').addClass('active');
+			break;
+		default:
+			$('#nav_home').addClass('active');
+	}
 
 	// Init Bootstrap-switch (stylized checkboxes)
 	input_nsfw.bootstrapSwitch();
@@ -116,7 +127,7 @@ $(document).ready(function() {
 	// On key Up show the options if something is in the field
 	input_url.keyup(function() {
 		var value = $(this).val();
-		if(value && value.length > 0) {
+		if (value && value.length > 0) {
 			div_options.removeClass('hidden');
 			div_options.fadeIn();
 			btn_go.removeClass('disabled');
