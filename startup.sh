@@ -12,7 +12,7 @@ export NODE_ENV='production'
 export BASE_PATH=$HOME/sfwme
 
 # Start the Server using forever
-if [[ ! -d logs ]]; then
+if [ ! -d logs ]; then
 	mkdir logs
 fi
 forever -a start -l $BASE_PATH/logs/forever.log -o $BASE_PATH/logs/sfwme.log -e $BASE_PATH/logs/err.log app.js
