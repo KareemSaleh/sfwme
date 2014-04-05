@@ -18,6 +18,7 @@ export PORT=80
 export MONGO_NODE_DRIVER_HOST=$BASE_URL
 export MONGO_NODE_DRIVER_PORT=27017
 export NODE_ENV='production'
+export BASE_PATH=$HOME/sfwme
 ```
 
 TODO v0.1.x Known Bugs
