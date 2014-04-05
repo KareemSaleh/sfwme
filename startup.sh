@@ -1,5 +1,8 @@
 #!/bin/sh
 
+# Git Update
+git fetch
+
 # Set ENV variables
 export BASE_URL='sfwme.com'
 export PORT=80
