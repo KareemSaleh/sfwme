@@ -1,7 +1,7 @@
 #!/bin/sh
 
 # Update repo
-git fetch
+git pull personal master
 
 # Update our dependencies
 npm update

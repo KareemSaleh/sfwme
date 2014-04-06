@@ -1,7 +1,7 @@
 #!/bin/sh
 
 # Git Update
-git fetch
+git pull personal master
 
 # Set ENV variables
 export BASE_URL='sfwme.com'
