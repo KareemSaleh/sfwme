@@ -17,7 +17,7 @@ var port = process.env['MONGO_NODE_DRIVER_PORT'] != null ? process.env['MONGO_NO
 
 var redirectMe = function(res, urlObj) {
 	
-	selectedAd = adCollection[Math.floor((Math.random()*adCollection))];
+	selectedAd = adCollection[Math.floor((Math.random()*adCollection.length))];
 
 	// Is it Safe For Work?
 	if (urlObj.nsfw) {
