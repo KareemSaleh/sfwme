@@ -24,7 +24,6 @@ export BASE_PATH=$HOME/sfwme
 TODO v0.1.x Known Bugs
 ------------------
 * Bug: Start over workflow undesirable.
-* Bug: SFW flag still redirecting to NSFW page.
 * Bug: Missing viewport for mobile devices.
 * Bug: Daisy chain urls into eachother.
 * Add API examples on the API page.

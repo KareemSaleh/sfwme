@@ -20,7 +20,7 @@ var redirectMe = function(res, urlObj) {
 	selectedAd = adCollection[Math.floor((Math.random()*adCollection.length))];
 
 	// Is it Safe For Work?
-	if (urlObj.nsfw) {
+	if (urlObj.nsfw == true) {
 		res.render('redirect', { title: 'SFWMe: NSFW!', url: urlObj.url, 
 			adUrl: selectedAd.adUrl, adText: selectedAd.adText });
 	} else if (urlObj.url) {
