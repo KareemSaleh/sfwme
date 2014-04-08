@@ -23,8 +23,12 @@ export BASE_PATH=$HOME/sfwme
 
 TODO v0.1.x Known Bugs
 ------------------
-* Add API examples on the API page
-* Problem where validator seems to hang on repeat-pattern long input strings for URL
+* Bug: Start over workflow undesirable.
+* Bug: SFW flag still redirecting to NSFW page.
+* Bug: Missing viewport for mobile devices.
+* Bug: Daisy chain urls into eachother.
+* Add API examples on the API page.
+* Bug: Problem where validator seems to hang on repeat-pattern long input strings for URL.
 
 TODO v0.2.x
 -------
