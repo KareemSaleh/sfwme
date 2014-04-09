@@ -44,7 +44,7 @@ var cacheIt = function(token, url, nsfw) {
 	// TODO: Add Expirations
 	redisdb.hmset(url, { nsfw: nsfw, token:token }, redis.print); // For fast autocomplete
 	redisdb.hmset(token, { url: url, nsfw: nsfw }, redis.print); // For fast redirecting
-}
+};
 
 var saveIt = function(token, url, nsfw) {
 
@@ -58,7 +58,23 @@ var saveIt = function(token, url, nsfw) {
 			}
 		});
 	});
-}
+};
+
+var isAlreadyShortened = function(url) {
+	var indexes = [ url.indexOf("http://" + BASE_URL),
+					url.indexOf("https://" + BASE_URL),
+					url.indexOf("http://www." + BASE_URL),
+					url.indexOf("https://www." + BASE_URL),
+					];
+					
+	for (var i = indexes.length - 1; i >= 0; i--) {
+		if (indexes[i] == 0) {
+			return true;
+		}
+	}
+
+	return false;
+};
 
 
 // ---------------------------------------------------
@@ -77,11 +93,15 @@ exports.index = function(req, res) {
  */
 exports.save = function(req, res) {
 
-	// Validate data
 	var url = req.body.protocol + req.body.url;
 	var nsfw = req.body.nsfw;
 	var source = req.body.source;
 
+	// Validate data
+	if (isAlreadyShortened(url)) {
+		respondErr(res, "Your URL seems to be already shortened. Why not use that link?");
+		return;
+	}
 	if (!validator.isURL(url)) {
 		respondErr(res, "Your URL seems to be Invalid.");
 		return;
