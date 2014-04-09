@@ -7,8 +7,8 @@ var adCollection = [
 		{ adUrl: "https://google.com/search?site=&tbm=isch&q=kittens", adText: "Show me Kittens!" },
 		{ adUrl: "https://google.com/search?site=&tbm=isch&q=puppies", adText: "Show me Puppies!" }
 	];
-var placeholders = [ "ExampleLink", "EwwwLink", "NsfwLink", "NaughyLink", "GrossLink", "NotPoliticallyCorrectLink", 
-					 "WhyWouldYouSendThisLink", "HorribleLink", "InappropriateLink"];
+var placeholders = [ "ExampleLink", "EwwwLink", "NsfwLink", "NaughtyLink", "GrossLink", "NotPoliticallyCorrectLink", 
+					 "WhyWouldYouSendThisLink", "HorribleLink", "InappropriateLink", "SmellyLink"];
 var domains = [ ".org", ".com", ".net", ".me", ".co.uk"];
 
 // Mongo Enviro Variables

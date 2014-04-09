@@ -1,18 +1,4 @@
 /*
- * Resets the Controls back to the default
- */
-var resetCtrls = function() {
-	var to_hide = $('#error-msg, #result, #options');
-	var inputs = $('#input-url, #nsfw, #btn-go');
-
-	to_hide.hide();
-	inputs.removeAttr('disabled');
-	$('#redirect-url').text('');
-	$('#protocol').text('http://')
-	$('#input-url').focus();
-};
-
-/*
  * Deals with dispaying the error or hiding it
  */
 var toggleError = function(msg, on) {
@@ -47,7 +33,6 @@ var handleSuccess = function(data, textStatus, jqXHR) {
 		div_redirect_url.text(data.data.base + "/" + data.data.token);
 		div_result.fadeIn();
 		toggleError("", false);
-		inputs.attr('disabled', 'disabled');
 	} else {
 		toggleError(data.msg, true);
 	}
@@ -92,7 +77,6 @@ $(document).ready(function() {
 		btn_go = $('#btn-go'),
 		div_options = $('#options'),
 		input_nsfw = $('#nsfw'),
-		link_start = $('#link-start'),
 		protocol = $('#protocol'),
 		nav = $('.nav > li');
 
@@ -125,23 +109,18 @@ $(document).ready(function() {
 	});
 
 	// On key Up show the options if something is in the field
-	input_url.keyup(function() {
+	input_url.keyup(function(e) {
 		var value = $(this).val();
-		if (value && value.length > 0) {
+
+		validateProtocol(value);
+
+		if (value && value.length > 0 && e.which != 13) {
 			div_options.removeClass('hidden');
 			div_options.fadeIn();
 			btn_go.removeClass('disabled');
+			$('#error-msg, #result').hide();
 		} else {
-			div_options.fadeOut();
-			btn_go.addClass('disabled');
+			div_options.addClass('hidden');
 		}
-
-		validateProtocol(value);
-	});
-
-	// Link to reset the controls.
-	link_start.on('click', function(e) {
-		e.preventDefault();
-		resetCtrls();
 	});
 });

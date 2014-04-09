@@ -23,8 +23,6 @@ export BASE_PATH=$HOME/sfwme
 
 TODO v0.1.x Known Bugs
 ------------------
-* Bug: Start over workflow undesirable.
-* Bug: Missing viewport for mobile devices.
 * Bug: Daisy chain urls into eachother.
 * Add API examples on the API page.
 * Bug: Problem where validator seems to hang on repeat-pattern long input strings for URL.
