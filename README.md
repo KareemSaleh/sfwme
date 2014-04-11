@@ -23,6 +23,7 @@ export BASE_PATH=$HOME/sfwme
 
 TODO v0.1.x Known Bugs
 ------------------
+* Feature: Add created date entry.
 * Need a way to report sfw links that are nsfw.
 * Add API examples on the API page.
 * Bug: Problem where validator seems to hang on repeat-pattern long input strings for URL.
