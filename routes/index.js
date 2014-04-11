@@ -8,7 +8,7 @@ var adCollection = [
 		{ adUrl: "https://google.com/search?site=&tbm=isch&q=puppies", adText: "Show me Puppies!" }
 	];
 var placeholders = [ "ExampleLink", "EwwwLink", "NsfwLink", "NaughtyLink", "GrossLink", "NotPoliticallyCorrectLink", 
-					 "WhyWouldYouSendThisLink", "HorribleLink", "InappropriateLink", "SmellyLink"];
+					 "HorribleLink", "InappropriateLink", "SmellyLink"];
 var domains = [ ".org", ".com", ".net", ".me", ".co.uk"];
 
 // Mongo Enviro Variables
