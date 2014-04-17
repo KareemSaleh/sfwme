@@ -25,12 +25,12 @@ var handleFailure = function() {
  */
 var handleSuccess = function(data, textStatus, jqXHR) {
 	var div_result = $('#result');
-	var div_redirect_url = $('#redirect-url');
+	var redirect_result = $('#input-redirect-result');
 	var inputs = $('#input-url, #nsfw, #btn-go');
 
 	// Populate the redirect
 	if (data.status == "OK") {
-		div_redirect_url.text(data.data.base + "/" + data.data.token);
+		redirect_result.val(data.data.base + "/" + data.data.token);
 		div_result.fadeIn();
 		toggleError("", false);
 	} else {
@@ -79,6 +79,13 @@ $(document).ready(function() {
 		input_nsfw = $('#nsfw'),
 		protocol = $('#protocol'),
 		nav = $('.nav > li');
+
+	// zClip Config
+	$('#copy-url-btn').zclip({ 
+		path: '//cdnjs.cloudflare.com/ajax/libs/zclip/1.1.2/ZeroClipboard.swf', 
+		copy: function() { return $('#input-redirect-result').val(); },
+		afterCopy: function(){}
+	});
 
 	// Update the navigation bar to reflect the page we're on
 	var pathname = window.location.pathname;
