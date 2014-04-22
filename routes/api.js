@@ -32,6 +32,30 @@ var respondErr = function(res, msg) {
 	});
 };
 
+var validatePost = function(res, url, nsfw, source) {
+	if (!validator.isURL(url)) {
+		respondErr(res, "Your URL seems to be Invalid.");
+		return false;
+	}
+
+	if (!nsfw) {
+		respondErr(res, "You seem to be missing the NSFW flag (See Docs).");
+		return false;
+	}
+
+	if (!source) {
+		respondErr(res, "Please specify a source to identify your app (See Docs).");
+		return false;
+	}
+
+	if (isAlreadyShortened(url)) {
+		respondErr(res, "Your URL seems to be already shortened. Why not use that link?");
+		return false;
+	}
+
+	return true;
+};
+
 /**
  * Save to redis cache for quick retrieval later. We save two entries: One where
  * the URL is the key and the other where the token is the key for quick reference.
@@ -98,12 +122,7 @@ exports.save = function(req, res) {
 	var source = req.body.source;
 
 	// Validate data
-	if (isAlreadyShortened(url)) {
-		respondErr(res, "Your URL seems to be already shortened. Why not use that link?");
-		return;
-	}
-	if (!validator.isURL(url)) {
-		respondErr(res, "Your URL seems to be Invalid.");
+	if (!validatePost(res, url, nsfw, source)) {
 		return;
 	}
 
