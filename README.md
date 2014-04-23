@@ -23,6 +23,7 @@ export BASE_PATH=$HOME/sfwme
 
 TODO v0.1.x Known Bugs
 ------------------
+* Feature: Notify user when they copy successfully.
 * Bug: Mobile render problem and slowness (bootstrap?/ Jquery?)
 * Feature: Add created date entry.
 * Need a way to report sfw links that are nsfw.
