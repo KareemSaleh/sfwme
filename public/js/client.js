@@ -121,13 +121,16 @@ $(document).ready(function() {
 
 		validateProtocol(value);
 
-		if (value && value.length > 0 && e.which != 13) {
+		if (value.length == 0) {
+			btn_go.addClass('disabled');
+			div_options.removeClass('hidden');
+		} else if (e.which != 13) {
 			div_options.removeClass('hidden');
 			div_options.fadeIn();
 			btn_go.removeClass('disabled');
 			$('#error-msg, #result').hide();
-		} else {
+		} else if (e.which == 13) {
 			div_options.addClass('hidden');
-		}
+		} 
 	});
 });

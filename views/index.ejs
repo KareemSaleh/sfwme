@@ -1,9 +1,17 @@
 <% include layouts/header %>
 		<div class="container voffset6">
-			<div id="error-msg" class="alert alert-danger hideme"><strong>Sorry!</strong>&nbsp;<span></span></div>
-			<div class="row">
-				<div class="col-md-2"></div>
-				<div class="col-md-8">
+
+			<div id="options" class="row voffset3">
+				<div class="col-md-12 text-center">
+					<p><strong>I would like to shorten a URL that is... </strong></p>
+					<div class="switch-block center-block">
+						<input id="nsfw" type="checkbox" data-on="danger" data-off="success" checked class="switch-large">
+					</div>
+				</div>
+			</div>
+
+			<div class="row voffset3">
+				<div class="col-md-12">
 					<div class="input-group">
 						<span id="protocol" class="input-group-addon">http://</span>
 						<input id="input-url" class="form-control input-lg" type="text" autocomplete="off" placeholder=<%= placeholder %>>
@@ -14,14 +22,7 @@
 				</div>
 			</div>
 
-			<div id="options" class="row voffset3 hideme">
-				<div class="col-md-2"></div>
-				<div class="col-md-8">
-					<div class="switch-block center-block">
-						<input id="nsfw" type="checkbox" data-on="danger" data-off="success" checked class="switch-large">
-					</div>
-				</div>
-			</div>
+			<div id="error-msg" class="alert alert-danger text-center voffset3 hideme"><strong>Sorry!</strong>&nbsp;<span></span></div>
 
 			<div id="result" class="row voffset3 hideme">
 				<div class="col-md-2"></div>
@@ -34,7 +35,7 @@
 						<input id="input-redirect-result" class="form-control text-center redirect-result" disabled type="text" autocomplete="off">
 						<span class="input-group-btn">
 							<button id="copy-url-btn" type="button" class="btn btn-default">
-								<span class="glyphicon glyphicon-floppy-disk"></span> Copy
+								<span class="glyphicon glyphicon-share"></span> Copy
 							</button>
 						</span>
 					</div>
