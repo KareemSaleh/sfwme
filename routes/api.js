@@ -15,11 +15,12 @@ var port = process.env['MONGO_NODE_DRIVER_PORT'] != null ? process.env['MONGO_NO
 // Private Methods
 // ---------------------------------------------------
  
-var respondOk = function(res, token) {
+var respondOk = function(res, token, nsfw) {
 	res.json({ 
 		status: "OK",
 		data: { 
 			token: token,
+			nsfw: nsfw,
 			base: BASE_URL
 		}
 	});
@@ -141,11 +142,11 @@ exports.save = function(req, res) {
 					console.log("Failed to save url: " + url + "error: " + e);
 				}
 
-				respondOk(res, token);
+				respondOk(res, token, nsfw);
 			});
 		} else {
 			console.log("CACHE: URL '" + url + "' with token '" + reply.token + "' exists in cache")
-			respondOk(res, reply.token);
+			respondOk(res, reply.token, reply.nsfw);
 		}
 	});
 };

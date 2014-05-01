@@ -31,6 +31,13 @@ var handleSuccess = function(data, textStatus, jqXHR) {
 	// Populate the redirect
 	if (data.status == "OK") {
 		redirect_result.val(data.data.base + "/" + data.data.token);
+		if (data.data.nsfw == 'true') {
+			redirect_result.removeClass('sfw');
+			redirect_result.addClass('nsfw');
+		} else {
+			redirect_result.removeClass('nsfw');
+			redirect_result.addClass('sfw');
+		}
 		div_result.fadeIn();
 		toggleError("", false);
 	} else {
