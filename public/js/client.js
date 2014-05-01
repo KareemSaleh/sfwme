@@ -104,6 +104,7 @@ $(document).ready(function() {
 
 	// Btn click & Htting the enter button.
 	btn_go.on('click', function() {
+		div_options.addClass('hidden');
 		submitUrl(input_url, input_nsfw.is(':checked'), protocol.text());
 	});
 	input_url.keypress(function(e) {
