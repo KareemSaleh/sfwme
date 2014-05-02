@@ -77,6 +77,15 @@ var submitUrl = function(input_url, nsfw, protocol) {
 };
 
 /*
+ * Reset the alert for the result
+ */
+var resetAlert = function() {
+	$('#result-alert').html('Below is your shortened URL! Copy to share!');
+	$('#result-alert').removeClass('alert-success');
+	$('#result-alert').addClass('alert-info');
+};
+
+/*
  * jQuery Ready function
  */
 $(document).ready(function() {
@@ -91,7 +100,11 @@ $(document).ready(function() {
 	$('#copy-url-btn').zclip({ 
 		path: '//cdnjs.cloudflare.com/ajax/libs/zclip/1.1.2/ZeroClipboard.swf', 
 		copy: function() { return $('#input-redirect-result').val(); },
-		afterCopy: function(){}
+		afterCopy: function() {
+			$('#result-alert').html('Copied!');
+			$('#result-alert').removeClass('alert-info');
+			$('#result-alert').addClass('alert-success');
+		}
 	});
 
 	// Update the navigation bar to reflect the page we're on
@@ -113,6 +126,7 @@ $(document).ready(function() {
 	btn_go.on('click', function() {
 		div_options.addClass('hidden');
 		submitUrl(input_url, input_nsfw.is(':checked'), protocol.text());
+		resetAlert();
 	});
 	input_url.keypress(function(e) {
 		if (e.which == 13) {
@@ -121,6 +135,7 @@ $(document).ready(function() {
 		} else {
 			toggleError("", false);
 		}
+		resetAlert();
 	});
 
 	// On key Up show the options if something is in the field
