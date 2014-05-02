@@ -23,11 +23,8 @@ export BASE_PATH=$HOME/sfwme
 
 TODO v0.1.x Known Bugs
 ------------------
-* Feature: Notify user when they copy successfully.
+* Bug: Missing API examples on the API page.
 * Bug: Mobile render problem and slowness (bootstrap?/ Jquery?)
-* Feature: Add created date entry.
-* Need a way to report sfw links that are nsfw.
-* Add API examples on the API page.
 * Bug: Problem where validator seems to hang on repeat-pattern long input strings for URL.
 
 TODO v0.2.x
