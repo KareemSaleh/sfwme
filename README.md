@@ -23,7 +23,6 @@ export BASE_PATH=$HOME/sfwme
 
 TODO v0.1.x Known Bugs
 ------------------
-* Bug: Missing API examples on the API page.
 * Bug: Mobile render problem and slowness (bootstrap?/ Jquery?)
 * Bug: Problem where validator seems to hang on repeat-pattern long input strings for URL.
 

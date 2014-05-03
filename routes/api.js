@@ -110,7 +110,7 @@ var isAlreadyShortened = function(url) {
  * Index endpoint. Lets put some direction here
  */
 exports.index = function(req, res) {
-	res.send("API Documentation coming soon.");
+	res.render('api', { title: 'SFWMe API Guide' });
 };
 
 /*

@@ -1,0 +1,65 @@
+<% include layouts/header %>
+	<div class="container">
+		<h1>API Guide</h1>
+		<h3>GET /</h3>
+		<code>
+			You're Looking at it :) The root of all the following commands.
+		</code>
+		<h3>POST /save</h3>
+		<h4>Parameters</h4>
+		<div class="api-params text-muted">
+			<p>
+				[required] url: The url you would like to shorten (exclude the protocol).
+			</p>
+			<p>
+				[required] nsfw: Set to true if "Not Safe For Work" or false if otherwise.
+			</p>
+			<p>
+				[required] protocol: The uri protocol to be used. For example "https" or "ftp."
+			</p>
+			<p>
+				[required] source: A string identifier for the name of your application.
+			</p>
+		</div>
+		<h5>Example POST:</h5>
+		<code>
+			{
+				url: "www.example.com/whatever/gross", 
+				nsfw: true, 
+				protocol: "http",
+				source: "mobile"
+			}
+		</code>
+		<h4>Result</h4>
+		<div class="api-params text-muted">
+			<p>
+				token: The url you would like to shorten (exclude the protocol).
+			</p>
+			<p>
+				nsfw: Set to true if "Not Safe For Work" or false if otherwise. The server may already have this URL and 
+				is returning the correct status of this link.
+			</p>
+			<p>
+				base: The base URL that to should be attached to the "token" result for example "sfwme.com/QrXwyZ"
+			</p>
+		</div>
+		<h5>Example Result:</h5>
+		<code>
+			{ 
+				status: "OK",
+				data: { 
+					token: QrXwyZ,
+					nsfw: true,
+					base: sfwme.com
+				}
+			}
+		</code>
+		<h5>Example Error:</h5>
+		<code>
+			{ 
+				status: "error",
+				msg: "Your URL seems to be Invalid."
+			}
+		</code>
+	</div>
+<% include layouts/footer %>
