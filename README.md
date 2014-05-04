@@ -29,11 +29,10 @@ TODO v0.1.x Known Bugs
 TODO v0.2.x
 -------
 
-* Ads? (The green button shown on redirect could be non intrusive)
 * Popular Links Page
 * Cache expirations
 * Chozen of pre-definded reasons.
-* Random redirect page messages and cancel actions.
 * Stats of most used reasons and redirects.
 * Email me this link later button.
+* Self service Ads? (The green button shown on redirect could be non intrusive)
 * Ensure latest versions of deps are locked in.
