@@ -23,15 +23,15 @@ export BASE_PATH=$HOME/sfwme
 
 TODO v0.1.x Known Bugs
 ------------------
+* Feature: Add Chozen of pre-definded reasons.
 * Bug: Mobile render problem and slowness (bootstrap?/ Jquery?)
 * Bug: Problem where validator seems to hang on repeat-pattern long input strings for URL.
 
 TODO v0.2.x
 -------
 
-* Popular Links Page
+* Popular Links Page with google charts and stats
 * Cache expirations
-* Chozen of pre-definded reasons.
 * Stats of most used reasons and redirects.
 * Email me this link later button.
 * Self service Ads? (The green button shown on redirect could be non intrusive)
