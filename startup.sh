@@ -1,8 +1,5 @@
 #!/bin/sh
 
-# Git Update
-git pull personal master
-
 # Set ENV variables
 export BASE_URL='sfwme.com'
 export PORT=3000
