@@ -16,4 +16,4 @@ if [ ! -d $HOME/logs ]; then
 fi
 
 # Start the Server using forever
-forever start -a -l $HOME/logs/sfwme.log app.js
+forever start -a -l $HOME/logs/sfwme.log --sourceDir $BASE_PATH app.js
