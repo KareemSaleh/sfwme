@@ -16,8 +16,4 @@ if [ ! -d $HOME/logs ]; then
 fi
 
 # Start the Server using forever
-if [ $(ps -e -o uid,cmd | grep $UID | grep node | grep -v grep | wc -l | tr -s "\n") -eq 0 ]
-then
-		export PATH=/usr/local/bin:$PATH
-		forever start --sourceDir $BASE_PATH app.js >> $HOME/logs/sfwme.log 2>&1
-fi
+forever start --sourceDir $BASE_PATH app.js >> $HOME/logs/sfwme.log 2>&1
