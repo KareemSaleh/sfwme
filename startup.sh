@@ -11,8 +11,13 @@ export MONGO_NODE_DRIVER_PORT=27017
 export NODE_ENV='production'
 export BASE_PATH=$HOME/sfwme
 
-# Start the Server using forever
-if [ ! -d logs ]; then
-	mkdir logs
+if [ ! -d $HOME/logs ]; then
+	mkdir $HOME/logs
 fi
-forever -a start -l $BASE_PATH/logs/forever.log -o $BASE_PATH/logs/sfwme.log -e $BASE_PATH/logs/err.log app.js
+
+# Start the Server using forever
+if [ $(ps -e -o uid,cmd | grep $UID | grep node | grep -v grep | wc -l | tr -s "\n") -eq 0 ]
+then
+		export PATH=/usr/local/bin:$PATH
+		forever start --sourceDir $BASE_PATH app.js >> $HOME/logs/sfwme.log 2>&1
+fi
