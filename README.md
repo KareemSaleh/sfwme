@@ -23,6 +23,7 @@ export BASE_PATH=$HOME/sfwme
 
 TODO v0.1.x Known Bugs
 ------------------
+* Feature: Spam Protection (really important if there is going to be a popular page.)
 * Feature: Add Chozen of pre-definded reasons.
 * Bug: Mobile render problem and slowness (bootstrap?/ Jquery?)
 * Bug: Problem where validator seems to hang on repeat-pattern long input strings for URL.
