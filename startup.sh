@@ -5,7 +5,7 @@ git pull personal master
 
 # Set ENV variables
 export BASE_URL='sfwme.com'
-export PORT=80
+export PORT=3000
 export MONGO_NODE_DRIVER_HOST='localhost'
 export MONGO_NODE_DRIVER_PORT=27017
 export NODE_ENV='production'
