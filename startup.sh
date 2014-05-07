@@ -13,4 +13,5 @@ if [ ! -d $HOME/logs ]; then
 fi
 
 # Start the Server using forever
+export PATH=/usr/local/bin:$PATH
 forever start -a -l $HOME/logs/sfwme.log --sourceDir $BASE_PATH app.js
