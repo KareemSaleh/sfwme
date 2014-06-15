@@ -19,13 +19,19 @@
     	"start": "node app.js"
 	},
 	"dependencies": {
-		"express": "3.x",
-		"ejs": "1.x",
-		"less-middleware": "0.2.x",
-		"redis": "0.10.x",
-		"validator": "3.x",
-		"mongodb": "1.4.x",
-		"node-minify": "0.10.x",
+		"express": "*",
+		"ejs": "*",
+		"less-middleware": "*",
+		"redis": "*",
+		"validator": "*",
+		"mongodb": "*",
+		"node-minify": "*",
+		"serve-favicon": "*",
+		"morgan": "*",
+		"cookie-parser": "*",
+		"method-override": "*",
+		"errorhandler": "*",
+		"body-parser": "*",
 		"monitor": "*",
 		"monitor-dashboard": "*"
 	}

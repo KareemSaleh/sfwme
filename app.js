@@ -4,6 +4,13 @@
  */
 
 var express = require('express'),
+	favicon = require('serve-favicon'),
+	logger = require('morgan'),
+	methodOverride = require('method-override'),
+	cookieParser = require('cookie-parser'),
+	errorHandler = require('errorhandler'),
+	bodyParser = require('body-parser'),
+
 	routes = require('./routes'),
 	api = require('./routes/api'),
 	http = require('http'),
@@ -18,20 +25,18 @@ var app = express();
 app.set('port', process.env.PORT || 3000);
 app.set('views', path.join(__dirname, 'views'));
 app.set('view engine', 'ejs');
-app.use(express.favicon(path.join(__dirname, 'public/img/favicon.ico')));
-app.use(express.logger('dev'));
-app.use(express.json());
-app.use(express.urlencoded());
-app.use(express.methodOverride());
-app.use(express.cookieParser('ftNBUSAk4wGj'));
-app.use(app.router);
+app.use(favicon(path.join(__dirname, 'public/img/favicon.ico')));
+app.use(bodyParser());
+app.use(logger('dev'));
+app.use(methodOverride());
+app.use(cookieParser('ftNBUSAk4wGj'));
 app.use(require('less-middleware')(path.join(__dirname, 'public')));
 app.use(express.static(path.join(__dirname, 'public')));
 monitor.start();
 
 // development only
 if ('development' == app.get('env')) {
-	app.use(express.errorHandler());
+	app.use(errorHandler());
 } //else {
 
 // Minify our client side JS
