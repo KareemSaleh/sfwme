@@ -21,7 +21,7 @@ export NODE_ENV='production'
 export BASE_PATH=$HOME/sfwme
 ```
 
-TODO v0.1.x Known Bugs
+TODO v0.1.x Known Issues
 ------------------
 * Feature: Spam Protection (really important if there is going to be a popular page.)
 * Feature: Add Chozen of pre-definded reasons.
