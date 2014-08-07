@@ -168,9 +168,7 @@ exports.save = function(req, res) {
 	// is this IP hammering
 	ipkey = IP_KEY_PREFIX + ip;
 	redisdb.get(ipkey, function(err, reply) {
-		console.log(err);
-		console.log(reply);
-		if (!reply || reply && reply < 50) {
+		if (!reply || reply && reply < 10) {
 			generateToken(res, url, nsfw);
 			redisdb.incr(IP_KEY_PREFIX + ip);
 		} else {

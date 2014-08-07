@@ -85,6 +85,13 @@ var resetAlert = function() {
 	$('#result-alert').addClass('alert-info');
 };
 
+var initLogo = function() {
+
+	logoNum = Math.floor((Math.random()*2) + 1);
+
+	$('#logo img').attr('src', 'img/logo/logo' + logoNum + '.png');
+}
+
 /*
  * jQuery Ready function
  */
@@ -95,6 +102,9 @@ $(document).ready(function() {
 		input_nsfw = $('#nsfw'),
 		protocol = $('#protocol'),
 		nav = $('.nav > li');
+
+	// Temporary A/B testing on new logo
+	initLogo();
 
 	// zClip Config
 	$('#copy-url-btn').zclip({ 
