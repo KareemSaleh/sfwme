@@ -1,7 +1,7 @@
 sfwme
 =====
 
-Not for censoring. For avoiding akwardness.
+Not for censoring. For avoiding awkwardness.
 
 Get it
 ------
